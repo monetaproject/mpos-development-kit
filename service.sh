@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Our coins to run
-COINS="litecoin"
+COINS="moneta"
 
 # Change this to your checkouts folder if you wish to run the script outside the WORKDIR
 WORKDIR=$PWD
@@ -24,8 +24,8 @@ case $1 in
     done
     echo ""
 
-    echo -n "Starting litecoin stratum ... "
-    LTCADDRESS=$(coins/litecoin/src/litecoind -datadir=testnet/litecoin getaccountaddress "")
+    echo -n "Starting moneta stratum ... "
+    LTCADDRESS=$(coins/moneta/src/monetad -datadir=testnet/moneta getaccountaddress "")
     echo -n "WALLET=${LTCADDRESS} "
     sed -i -e "s/^CENTRAL_WALLET.*/CENTRAL_WALLET = '$LTCADDRESS'/" mining/stratum-mining/conf/config.py
     cd mining/stratum-mining
